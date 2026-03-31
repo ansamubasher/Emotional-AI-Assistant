@@ -1,0 +1,118 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Container */
+.journal-container {
+  position: relative; 
+  height: 100vh; 
+  width: 100vw; 
+  background-image: url('../assets/Background.png');
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* prevents scrollbars if girl goes slightly out */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  align-items: center; /* center content horizontally */
+}
+
+/* Content */
+.content {
+  text-align: center;
+  position: relative;
+}
+
+/* Title */
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: black;
+}
+
+/* Subtitle */
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Heart */
+.heart-icon {
+  position: absolute;
+  right: -60px;
+  top: 10px;
+  width: 50px;
+}
+
+/* Girl */
+.girl-img {
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  width: 200px; /* adjust size as needed */
+  height: auto;
+  pointer-events: none; /* optional, so it doesn’t block clicks */
+}
+
+/* Buttons */
+.toggle-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Active */
+.btn-active {
+  background-color: black;
+  color: white;
+}
+
+/* Outline */
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  color: black;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center; /* Vertically center the buttons */
+  gap: 12px; /* Space between buttons */
+}
+
+.toggle-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.arrow-button {
+  height: 40px; /* Match the height of the radio buttons */
+  padding: 0 16px; /* Add some padding for width */
+  font-size: 24px; /* Make the arrow big enough to be visible */
+  cursor: pointer;
+  background-color: #050505; /* You can adjust color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.arrow-button:hover {
+  background-color: #303030;
+}
