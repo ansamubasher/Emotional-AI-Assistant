@@ -58,15 +58,15 @@ h1 {
 
 .heart-icon-T {
   position: absolute;
-  right: 450px;
-  top: 15px;
+  right: 100px;
+  top: -15px;
   width: 50px;
 }
 
 .heart-icon-A {
   position: absolute;
-  right: 450px;
-  top: 110px;
+  right: 90px;
+  top: -20px;
   width: 50px;
 }
 
@@ -148,8 +148,8 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
   color: #000;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   gap: 0.5rem;
 }
 
