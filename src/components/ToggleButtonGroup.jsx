@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
-const ToggleButtonGroup = () => {
-  const [selected, setSelected] = useState("Text");
-
+const ToggleButtonGroup = ({mode, setMode}) => {
   return (
     <div className="toggle-group">
       <Button
         label="Text"
-        active={selected === "Text"}
-        onClick={() => setSelected("Text")}
+        active={mode === "Text"}
+        onClick={() => setMode("Text")}
       />
       <Button
         label="Audio"
-        active={selected === "Audio"}
-        onClick={() => setSelected("Audio")}
+        active={mode === "Audio"}
+        onClick={() => setMode("Audio")}
       />
     </div>
   );
