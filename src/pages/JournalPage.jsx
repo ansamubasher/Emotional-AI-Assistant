@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ToggleButtonGroup from "../components/ToggleButtonGroup";
 import ArrowButton from "../components/ArrowButton";
 import "../styles/journal.css";
@@ -8,15 +9,24 @@ import heart from "../assets/heart.png";
 import girl from "../assets/girl-pt1.svg";
 
 const JournalPage = () => {
-  const [mode, setMode] = useState("text");
+  const [mode, setMode] = useState("Text");
+  const navigate = useNavigate();
+
   const handleArrowClick = () => {
-    console.log("Arrow clicked with mode:", mode);
+    if (mode=="Text") {
+      navigate("/text-entry");
+    } 
+    else if (mode=="Audio") {
+      navigate("/audio-entry");
+    }
+    else {
+      alert("Please select an option first");
+    }
   };
 
   return (
     <div
       className="journal-container"
-      // style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="content">
         
@@ -29,7 +39,7 @@ const JournalPage = () => {
         <p className="subtitle">Choose your style</p>
 
         {/* Toggle buttons */}
-        <ToggleButtonGroup />
+        <ToggleButtonGroup mode={mode} setMode={setMode} />
 
         <ArrowButton onClick={handleArrowClick} />
         
