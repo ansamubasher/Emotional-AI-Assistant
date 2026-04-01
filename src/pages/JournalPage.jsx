@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ToggleButtonGroup from "../components/ToggleButtonGroup";
 import ArrowButton from "../components/ArrowButton";
 import "../styles/journal.css";
-
+import Sidebar from "../components/Sidebar";
 import bg from "../assets/Background.png";
 import heart from "../assets/heart.png";
-import girl from "../assets/girl-pt1.svg";
+import girl from "../assets/girl-pt3.svg";
 
 const JournalPage = () => {
   const [mode, setMode] = useState("Text");
@@ -14,10 +14,10 @@ const JournalPage = () => {
 
   const handleArrowClick = () => {
     if (mode=="Text") {
-      navigate("/text-entry");
+      navigate("/journal/text-entry");
     } 
     else if (mode=="Audio") {
-      navigate("/audio-entry");
+      navigate("/journal/audio-entry");
     }
     else {
       alert("Please select an option first");
@@ -25,9 +25,10 @@ const JournalPage = () => {
   };
 
   return (
+    <div className="external-container">
+      <Sidebar />
     <div
-      className="journal-container"
-    >
+      className="journal-container">
       <div className="content">
         
         {/* Heart icon */}
@@ -46,6 +47,7 @@ const JournalPage = () => {
 
       </div>
       <img src={girl} alt="girl" className="girl-img" />
+    </div>
     </div>
   );
 };

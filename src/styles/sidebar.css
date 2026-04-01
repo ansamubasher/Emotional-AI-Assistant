@@ -1,0 +1,82 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: row; /* sidebar left, content right */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: rgba(40, 40, 80, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Main content */
+.main-content {
+  flex: 1; /* takes remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px;
+
+}
+
+.logo-img {
+  width: 35px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active {
+  color: #a855f7; /* purple */
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Submenu */
+.submenu {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-item {
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.submenu-item:hover {
+  color: #ddd;
+}

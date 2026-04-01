@@ -21,6 +21,13 @@ html, body, #root {
   align-items: center; /* center content horizontally */
 }
 
+.external-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; 
+  overflow: hidden;
+}
+
 /* Content */
 .content {
   text-align: center;
@@ -67,7 +74,7 @@ h1 {
 .girl-img {
   position: absolute;
   bottom: 0px;
-  left: 5px;
+  right: 5px;
   width: 200px; /* adjust size as needed */
   height: auto;
   pointer-events: none; /* optional, so it doesn’t block clicks */
