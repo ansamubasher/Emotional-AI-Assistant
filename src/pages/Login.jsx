@@ -54,7 +54,7 @@ function Login() {
                 </h3>
             </div>
             <button className="confirm"
-                onClick="handleLogin">
+                onClick={handleLogin}>
                 Login
             </button>
         </div>
