@@ -52,7 +52,7 @@ function Signup() {
                 </h3>
             </div>
             <button className="confirm"
-                onClick="handleSignup">
+                onClick={handleSignup}>
                 Login
             </button>
 
