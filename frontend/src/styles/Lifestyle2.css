@@ -1,0 +1,381 @@
+.screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;
+
+    /* // makes it responsive */
+    object-fit: cover;
+    object-position: center;
+    background-size: cover; 
+}
+
+.card1 {
+    position: absolute;
+    width: 25%;
+    height: 35%;
+    top: 10%;
+    /* distance from top of parent */
+    left: 20%;
+    border-radius: 25px;
+    /* distance from left of parent */
+
+    background-color: #E6DEFF;
+
+    z-index: 1;
+
+}
+
+.card2 {
+    position: absolute;
+    width: 25%;
+    height: 35%;
+    top: 10%;
+    /* distance from top of parent */
+    right: 20%;
+    /* distance from left of parent */
+
+    background-color: #E6DEFF;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.card3 {
+    position: absolute;
+    width: 35%;
+    height: 30%;
+
+    top: 50%;
+    left: 33%;
+    /* distance from left of parent */
+
+    background-color: #E6DEFF;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.headingC1 {
+
+    position: absolute;
+    top: 14%;
+    /* distance from top of parent */
+    left: 24%;
+    text-align: center;
+    z-index: 1;
+    font-size: 18 px;
+    font-family: "Inter";
+    font-weight: bold;
+
+
+}
+ 
+.button1 {
+
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 20%;
+    /* distance from top of parent */
+    left: 23%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+
+}
+
+.button2 {
+
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 20%;
+    left: 35%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+
+}
+
+.button3 {
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 30%;
+    /* distance from top of parent */
+    left: 23%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.button4 {
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 30%;
+    left: 35%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+
+}
+
+.button5 {
+
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 20%;
+    left: 58%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.button6 {
+
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 20%;
+    left: 70%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+
+.headingC2 {
+    position: absolute;
+    top: 13.4%;
+    /* distance from top of parent */
+    left: 62%;
+    text-align: center;
+    z-index: 1;
+    font-size: 18 px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+
+.inputField {
+    background-color: aliceblue;
+
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    /* distance from top of parent */
+    left: 24%;
+    z-index: 1;
+    width: 17%;
+}
+
+.stepsInput {
+    background-color: aliceblue;
+
+    position: absolute;
+    z-index: 1;
+    top: 34%;
+    /* distance from top of parent */
+    left: 59%;
+    z-index: 1;
+    width: 17%;
+
+}
+
+.stepsHeading {
+    position: absolute;
+    top: 27%;
+    /* distance from top of parent */
+    left: 63%;
+    text-align: center;
+    z-index: 1;
+    font-size: 18 px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+.meal{
+      position: absolute;
+  top: 50%;
+  /* distance from top of parent */
+  left: 50%;
+  text-align: center;
+  z-index: 1;
+  font-size: 20 px;
+  font-family: "Inter";
+  font-weight: bold;
+}
+.meal2{
+     position: absolute;
+  top: 55%;
+  /* distance from top of parent */
+  left: 47%;
+  text-align: center;
+  z-index: 1;
+  font-size: 20 px;
+  font-family: "Inter";
+  font-weight: bold;
+}
+.mealButton{
+
+    position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 4%;
+    top: 62%;
+    left: 44%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.mealButton2{
+ position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 4%;
+    top: 62%;
+    left: 52%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.caffeine{
+      position: absolute;
+  top: 68%;
+  /* distance from top of parent */
+  left: 47%;
+  text-align: center;
+  z-index: 1;
+  font-size: 20 px;
+  font-family: "Inter";
+  font-weight: bold;
+}
+.caffeineInput{
+    background-color: aliceblue;
+
+    position: absolute;
+    z-index: 1;
+    top: 74%;
+    /* distance from top of parent */
+    left: 45.5%;
+    z-index: 1;
+    width: 10%;
+}
+.ScreenTime{
+    position: absolute;
+    top: 10%;
+    /* distance from top of parent */
+    left: 29%;
+    text-align: center;
+    z-index: 1;
+    font-size: 20 px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+.physical{
+    position: absolute;
+    top: 10%;
+    /* distance from top of parent */
+    left: 63%;
+    text-align: center;
+    z-index: 1;
+    font-size: 20 px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+h1{
+  position: absolute;
+  
+  transform: translateX(-50%);
+  left: 50%;
+  
+  margin:0;
+  padding: 0;
+  top:3%;
+  
+}
+.confirmButton{
+     position: absolute;
+    background-color: #ab90fc;
+    border-radius: 20px;
+    height: 5%;
+    top: 90%;
+    left: 70%;
+    z-index: 1;
+    width: 7%;
+    font-family: "Inter";
+    font-weight: bold;
+}
+.micButton1{
+   position: absolute;
+  background-color: #ab90fc;
+  border-radius: 20px;
+
+  top: 37%;
+  /* distance from top of parent */
+  left: 35%;
+  z-index: 1;
+
+  font-family: "Inter";
+  font-weight: bold;
+}
+
+
+.micButton2{
+   position: absolute;
+  background-color: black;
+  border-radius: 20px;
+
+  top: 39%;
+  /* distance from top of parent */
+  left: 70%;
+  z-index: 1;
+
+  font-family: "Inter";
+  font-weight: bold;
+}
+
+.micButton3{
+   position: absolute;
+  background-color: black;
+  border-radius: 20px;
+
+  top: 75%;
+  /* distance from top of parent */
+  left: 59%;
+  z-index: 1;
+
+  font-family: "Inter";
+  font-weight: bold;
+}
