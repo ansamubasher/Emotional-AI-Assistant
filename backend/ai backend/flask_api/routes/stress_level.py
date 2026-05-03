@@ -7,6 +7,7 @@ app = Flask(__name__)
 # ---- Load model once ----
 MODEL_PATH = os.path.join("models", "stressDetectionModel.joblib")
 
+
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model file not found: {MODEL_PATH}")
 
@@ -87,4 +88,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
