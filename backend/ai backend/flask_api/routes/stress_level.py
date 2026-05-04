@@ -1,15 +1,19 @@
-from flask import Flask, request, jsonify
+from flask import Blueprint, Flask, request, jsonify
 import os
 import joblib
 
-app = Flask(__name__)
+stress_bp = Blueprint("stress", __name__)
 
 # ---- Load model once ----
-MODEL_PATH = os.path.join("models", "stressDetectionModel.joblib")
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "stressDetectionModel.joblib")
 
 if not os.path.exists(MODEL_PATH):
-    raise FileNotFoundError(f"Model file not found: {MODEL_PATH}")
+    # Fallback to relative path if absolute fails (e.g. in some environments)
+    MODEL_PATH = os.path.join("models", "stressDetectionModel.joblib")
+
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
 
 model = joblib.load(MODEL_PATH)
 
@@ -36,11 +40,13 @@ def predict_stress_with_confidence(model, sample_input: list) -> dict:
     }
 
 
-# ---- Flask Route ----
-@app.route("/predict", methods=["POST"])
+# ---- Flask Route ---- 
+@stress_bp.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.get_json()
+        if not data:
+            return jsonify({"error": "No JSON data provided"}), 400
 
         # Expecting JSON like:
         # {
@@ -87,4 +93,6 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app = Flask(__name__)
+    app.register_blueprint(stress_bp)
+    app.run(debug=True, port=5002)
