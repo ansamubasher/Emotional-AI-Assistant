@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { getEmpathyResponse } = require("../controller/empathyController");
 
-const empathyController = require("../controller/empathyController");
-
-// Node endpoint → calls Flask empathy model
-router.post("/empathy", empathyController.getEmpathyResponse);
+// POST /api/empathy
+router.post("/", getEmpathyResponse);
 
 module.exports = router;
