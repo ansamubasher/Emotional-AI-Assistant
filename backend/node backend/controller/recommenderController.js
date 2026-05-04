@@ -72,7 +72,7 @@ const predictStress = async (req, res) => {
 
         // Call Python script using PythonShell
         const scriptPath = path.join(__dirname, '..', 'backend');
-        
+
         const options = {
             mode: 'json',
             pythonPath: process.env.PYTHON_PATH || 'python3', // or 'python' depending on system
@@ -82,7 +82,7 @@ const predictStress = async (req, res) => {
 
         // Execute Python script
         const results = await PythonShell.run('recommender_wrapper.py', options);
-        
+
         if (!results || results.length === 0) {
             throw new Error('No response from Python script');
         }
@@ -96,7 +96,7 @@ const predictStress = async (req, res) => {
 
     } catch (error) {
         console.error('Prediction error:', error.message);
-        
+
         // Handle Python script errors
         if (error.message.includes('PythonShell')) {
             return res.status(500).json({
@@ -140,21 +140,21 @@ const predictStressDirect = async (req, res) => {
 
         // Simple rule-based prediction (fallback if ML model unavailable)
         let stressScore = 0;
-        
+
         if (userData.sleep_hours < 6) stressScore += 2;
         else if (userData.sleep_hours > 9) stressScore += 1;
-        
+
         if (userData.screen_time_hours > 8) stressScore += 2;
         else if (userData.screen_time_hours > 6) stressScore += 1;
-        
+
         if (userData.physical_activity === 0) stressScore += 2;
-        
+
         if (userData.caffeine_intake > 3) stressScore += 2;
         else if (userData.caffeine_intake > 2) stressScore += 1;
-        
+
         if (userData.academic_pressure === 2) stressScore += 2;
         else if (userData.academic_pressure === 1) stressScore += 1;
-        
+
         if (userData.study_hours < 2) stressScore += 1;
 
         let predictedStressLevel;
@@ -383,7 +383,7 @@ const batchPredict = async (req, res) => {
                 // Use the direct prediction for batch processing (faster)
                 let stressScore = 0;
                 const user = users[i];
-                
+
                 if (user.sleep_hours < 6) stressScore += 2;
                 else if (user.sleep_hours > 9) stressScore += 1;
                 if (user.screen_time_hours > 8) stressScore += 2;

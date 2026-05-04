@@ -6,7 +6,7 @@ const {
     getFeatures,
     healthCheck,
     batchPredict
-} = require('../controller/stressController');
+} = require('../controller/recommenderController');
 
 // ============================================
 // Stress Prediction Routes
