@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const FLASK_URL = "http://127.0.0.1:5000/p  redict";
+const FLASK_URL = "http://127.0.0.1:5000/api/stress/predict";
 
 exports.predictStress = async (req, res) => {
     try {
