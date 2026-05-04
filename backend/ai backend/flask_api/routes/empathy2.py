@@ -1,5 +1,9 @@
 from flask import Blueprint, request, jsonify
-from models.companion_int import generate_response   # 👈 YOUR MODEL
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+from inference.companion_interfernce import generate_response   
 
 empathy_bp = Blueprint("empathy", __name__)
 
@@ -9,7 +13,7 @@ def empathy():
     user_input = data.get("text")
 
     response = generate_response(user_input)
-
+ 
     return jsonify({
         "response": response
     })
