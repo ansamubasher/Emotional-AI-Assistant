@@ -1,80 +1,104 @@
- .container {
-  position: relative;
+.SignupPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   width: 100%;
-  height: 100vh;
-
 }
 
-h2 {
-  position: absolute;
-  top: 10%;
-  left: 50%;
+.signupContainer {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
 
-  transform: translateX(-50%);
-  font-size: 18 px;
-  font-family: "Inter";
+.signupCard {
+  display: none; /* Hide the old card if it's just decorative */
+}
+
+.signupForm h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
-  z-index:1;
+  color: #555;
 }
 
-.username {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18 px;
-  font-family: "Inter";
+.formRow {
+  display: flex;
+  gap: 15px;
+}
+
+.formGroup.half {
+  flex: 1;
+}
+
+.genderSelect {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-family: "Inter", sans-serif;
+  background: white;
+}
+
+.signupButton {
+  width: 100%;
+  height: 45px;
+  background-color: #ab90fc;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
-  z-index:1;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
 }
 
-.input {
-  position: absolute;
-  top: 38%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: aliceblue;
-  z-index:1;
+.signupButton:hover {
+  background-color: #9270f9;
 }
 
-.passwordHeading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18 px;
-  font-family: "Inter";
-  font-weight: bold;
-  z-index:1;
+.signupButton:disabled {
+  background-color: #ccc;
 }
 
-.input2 {
-  position: absolute;
-  top: 58%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index:1;
-}
-.loginCard{
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  z-index:1;
-  
-  transform: translate(-50%, -50%); /* centers perfectly */
- 
-
+.errorMessage {
+  color: red;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
 }
 
-.confirm{
-  position: absolute;
-    background-color: #ab90fc;
-    border-radius: 20px;
-    height: 5%;
-    top: 75%;
-    left: 55%;
-    z-index: 1;
-    width: 7%;
-    font-family: "Inter";
-    font-weight: bold;
+.loginLink {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+  color: #ab90fc;
 }
