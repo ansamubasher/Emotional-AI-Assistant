@@ -1,5 +1,5 @@
 const axios = require("axios");
-const LifestyleLog = require("../models/LifestyleLog");
+const LifestyleLog = require("../models/LifestyleLogs");
 
 const FLASK_URL = "http://127.0.0.1:5001/api/stress/predict";
 

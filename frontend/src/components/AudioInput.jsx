@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../styles/journal.css";
 
-const AudioInput = () => {
+const AudioInput = ({ onAudioSave }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [audioURL, setAudioURL] = useState(null);
 
@@ -25,6 +25,16 @@ const AudioInput = () => {
           const blob = new Blob(chunksRef.current, { type: "audio/webm" });
           const url = URL.createObjectURL(blob);
           setAudioURL(url);
+
+          // Convert to Base64 for saving
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            if (onAudioSave) {
+              onAudioSave(base64data);
+            }
+          };
         };
 
         mediaRecorder.start();

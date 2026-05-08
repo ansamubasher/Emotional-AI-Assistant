@@ -5,6 +5,7 @@ import JournalEntryAudio from "./pages/JournalEntryAudio";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Lifestyle2 from "./pages/Lifestyle2";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/journal/audio-entry" element={<JournalEntryAudio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/lifestyle" element={<Lifestyle2 />} />
       </Routes>
     </Router>
   );
