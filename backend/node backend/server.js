@@ -20,7 +20,7 @@ app.use(cors());
 connectDB();
 
 // Routes
-//const stressRoutes = require("./routes/stressRoutes");
+const stressRoutes = require("./routes/stressRoutes");
 const empathyRoutes = require("./routes/empathyRoutes");
 const journalRoutes = require("./routes/journalRoutes");
 const authRoutes = require("./routes/authRoutes");
