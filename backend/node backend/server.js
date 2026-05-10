@@ -17,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cors());
 // Connect to DB before starting the server
-//connectDB();
+connectDB();
 
 // Routes
 //const stressRoutes = require("./routes/stressRoutes");
