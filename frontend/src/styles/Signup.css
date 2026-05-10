@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ================= FULLSCREEN BACKGROUND ================= */
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* ================= HEADINGS ================= */
+
+h2 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-family: "Inter";
+  font-weight: bold;
+  z-index:1;
+}
+
+.username {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-family: "Inter";
+  font-weight: bold;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.passwordHeading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-family: "Inter";
+  font-weight: bold;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* ================= INPUTS ================= */
+
+.input {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.input2 {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* ================= LOGIN CARD ================= */
+
+.loginCard {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* ================= BUTTON ================= */
+
+.confirm {
+  position: absolute;
+  background-color: #ab90fc;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter";
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: 0.2s ease;
+}
+
+.confirm:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #a8b4f8 0%, #c9a8f8 25%, #f8a8c8 50%, #a8b4f8 75%, #b8a8f8 100%);
+  background-size: cover;
+}
+
+.signupPage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.signupBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.loginRedirect {
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-family: "Inter";
+  font-size: 14px;
+  white-space: nowrap;
+  color: #444;
+}
+
+.loginLink {
+  color: #ab90fc;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.loginLink:hover {
+  color: #8a6fe0;
+}

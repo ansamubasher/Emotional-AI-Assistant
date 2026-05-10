@@ -1,0 +1,226 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Container */
+.journal-container {
+  position: relative; 
+  height: 100vh; 
+  width: 100vw; 
+  background-image: url('../assets/Background.png');
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* prevents scrollbars if girl goes slightly out */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  align-items: center; /* center content horizontally */
+}
+
+.external-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; 
+  overflow: hidden;
+}
+
+/* Content */
+.content {
+  text-align: center;
+  position: relative;
+}
+
+/* Title */
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: black;
+}
+
+/* Subtitle */
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Heart */
+.heart-icon {
+  position: absolute;
+  right: -60px;
+  top: 10px;
+  width: 50px;
+}
+
+.heart-icon-T {
+  position: absolute;
+  right: 100px;
+  top: -15px;
+  width: 50px;
+}
+
+.heart-icon-A {
+  position: absolute;
+  right: 90px;
+  top: -20px;
+  width: 50px;
+}
+
+/* Girl */
+.girl-img {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  width: 200px; /* adjust size as needed */
+  height: auto;
+  pointer-events: none; /* optional, so it doesn’t block clicks */
+}
+
+/* Buttons */
+.toggle-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin:5px;
+}
+
+/* Active */
+.btn-active {
+  background-color: black;
+  color: white;
+}
+
+/* Outline */
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  color: black;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center; /* Vertically center the buttons */
+  gap: 12px; /* Space between buttons */
+}
+
+.toggle-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+} 
+
+.arrow-button {
+  height: 40px; /* Match the height of the radio buttons */
+  padding: 0 16px; /* Add some padding for width */
+  font-size: 24px; /* Make the arrow big enough to be visible */
+  cursor: pointer;
+  background-color: #050505; /* You can adjust color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.arrow-button:hover {
+  background-color: #303030;
+}
+
+.journal-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  /* display: flex;
+  align-items: center; */
+  gap: 0.5rem;
+}
+
+.text-input, .text-area {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  opacity: 0.6;
+  margin: 5px;  
+}
+
+.text-area {
+  height: 300px;
+  resize: none;
+}
+
+
+/* Audio Input Container */
+.audio-input-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bar */
+.audio-bar {
+  width: 100%;
+  width: 500px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.7;
+  margin-bottom:10px;
+}
+
+/* Placeholder text */
+.placeholder-text {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Mic button */
+.mic-button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-button:hover {
+  background-color: #303030;
+}
+
+/* Audio player */
+.audio-player {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 600px;
+}
