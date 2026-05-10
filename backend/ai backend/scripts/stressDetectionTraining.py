@@ -62,6 +62,48 @@ print(f"\nStress level distribution:")
 print(df["stress_level"].value_counts().rename({0:"Low",1:"Medium",2:"High"}).to_string())
 
 # ──────────────────────────────────────────────
+# 2b. AUDIT — check if labels are rule-based
+# ──────────────────────────────────────────────
+print("\n── AUDIT: Checking for rule-based labels ──")
+
+# 1. Show stress distribution by sleep_hours buckets
+print("\nStress level by sleep_hours bucket:")
+df["sleep_bucket"] = pd.cut(df["sleep_hours"], bins=5)
+print(df.groupby("sleep_bucket")["stress_level"].value_counts().unstack(fill_value=0).to_string())
+df.drop(columns=["sleep_bucket"], inplace=True)
+
+# 2. Show stress distribution by screen_time_hours buckets
+print("\nStress level by screen_time_hours bucket:")
+df["screen_bucket"] = pd.cut(df["screen_time_hours"], bins=5)
+print(df.groupby("screen_bucket")["stress_level"].value_counts().unstack(fill_value=0).to_string())
+df.drop(columns=["screen_bucket"], inplace=True)
+
+# 3. Check if any single feature perfectly predicts stress
+print("\n── Correlation of each feature with stress_level ──")
+numeric_df = df.select_dtypes(include=[np.number])
+correlations = numeric_df.corr()["stress_level"].drop("stress_level").sort_values(ascending=False)
+print(correlations.round(4).to_string())
+
+# 4. Look for suspiciously clean boundaries
+print("\n── Min/Max of top features per stress class ──")
+for col in ["sleep_hours", "screen_time_hours"]:
+    print(f"\n{col}:")
+    print(df.groupby("stress_level")[col].agg(["min", "max", "mean"]).rename(
+        index={0: "Low", 1: "Medium", 2: "High"}
+    ).to_string())
+
+# 5. Check for duplicate rows (sign of synthetic data)
+dupes = df.duplicated().sum()
+print(f"\nDuplicate rows: {dupes} / {len(df)} ({100*dupes/len(df):.1f}%)")
+
+# 6. Check unique value counts (synthetic data has suspiciously round numbers)
+print("\n── Unique values per feature ──")
+for col in ["sleep_hours", "screen_time_hours", "study_hours", "caffeine_intake", "age"]:
+    print(f"  {col}: {df[col].nunique()} unique values  |  sample: {sorted(df[col].unique())[:10]}")
+
+print("\n── END AUDIT ──\n")
+
+# ──────────────────────────────────────────────
 # 3. FEATURES — same order used at inference time
 # ──────────────────────────────────────────────
 FEATURE_COLS = [
