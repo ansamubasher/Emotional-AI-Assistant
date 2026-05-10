@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/sidebar.css";
 import logo from "../assets/logo.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-    const [active, setActive] = useState("Dashboard");
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Helper to check if a path is active
+    const isActive = (path) => location.pathname === path;
+
     return (
         <div className="sidebar">
-
             {/* Logo */}
             <div className="logo-section">
                 <img src={logo} alt="logo" className="logo-img" />
@@ -18,75 +21,57 @@ const Sidebar = () => {
             {/* Menu */}
             <div className="menu">
                 <div
-                    className={`menu-item ${active === "Dashboard" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Dashboard");
-                        navigate("/");
-                    }}
+                    className={`menu-item ${isActive("/dashboard") ? "active" : ""}`}
+                    onClick={() => navigate("/dashboard")}
                 >
                     Dashboard
                 </div>
 
                 <div
-                    className={`menu-item ${active === "Journal" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Journal");
-                        navigate("/journal");
-                    }}
+                    className={`menu-item ${isActive("/journal") || isActive("/journal/text") || isActive("/journal/audio") ? "active" : ""}`}
+                    onClick={() => navigate("/journal")}
                 >
-                    Journal ▾
+                    Recommendations ▾
                 </div>
 
                 <div
-                    className={`submenu-item ${active === "Audio" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Audio");
-                        navigate("/journal/audio-entry");
-                    }}
+                    className={`submenu-item ${isActive("/journal/audio") ? "active" : ""}`}
+                    onClick={() => navigate("/journal/audio")}
                 >
                     Audio
                 </div>
 
                 <div
-                    className={`submenu-item ${active === "Text" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Text");
-                        navigate("/journal/text-entry");
-                    }}
+                    className={`submenu-item ${isActive("/journal/text") ? "active" : ""}`}
+                    onClick={() => navigate("/journal/text")}
                 >
                     Text
                 </div>
 
                 <div
-                    className={`menu-item ${active === "Lifestyle" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Lifestyle");
-                        navigate("/lifestyle");
-                    }}
-                >
-                    Lifestyle
-                </div>
-
-                <div
-                    className={`menu-item ${active === "Log Habits" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("Log Habits");
-                        // navigate("/log-habits");
-                    }}
+                    className={`menu-item ${isActive("/lifestyle") || isActive("/lifestyle2") ? "active" : ""}`}
+                    onClick={() => navigate("/lifestyle")}
                 >
                     Log Habits
                 </div>
 
                 <div
-                    className={`menu-item ${active === "View Profile" ? "active" : ""}`}
-                    onClick={() => {
-                        setActive("View Profile");
-                        // navigate("/view-profile");
-                    }}
+                    className={`menu-item ${isActive("/empathy") ? "active" : ""}`}
+                    onClick={() => navigate("/empathy")}
                 >
-                    View Profile
+                    Empathy Chat
                 </div>
+            </div>
 
+            {/* Logout at the bottom */}
+            <div className="sidebar-footer">
+                <div className="logout-btn" onClick={() => {
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("token");
+                    navigate("/login");
+                }}>
+                    Logout
+                </div>
             </div>
         </div>
     );

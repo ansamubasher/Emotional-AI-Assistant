@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -6,46 +8,89 @@ html, body, #root {
 }
 
 /* Container */
-.journal-container {
-  position: relative; 
-  height: 100vh; 
-  width: 100vw; 
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
   background-image: url('../assets/Background.png');
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden; /* prevents scrollbars if girl goes slightly out */
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* center content vertically */
-  align-items: center; /* center content horizontally */
+  justify-content: flex-start; /* Start from top to prevent centering overlap */
+  align-items: center;
+  padding-top: 60px; /* Give some breathing room at the very top */
+}
+
+.journal-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/Background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .external-container {
   display: flex;
   flex-direction: row;
-  height: 100vh; 
+  height: 100vh;
   overflow: hidden;
 }
 
 /* Content */
 .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   position: relative;
+  gap: 60px; /* Massive gap to prevent ANY overlap */
+  width: 100%;
+}
+
+.shift-up {
+  padding-top: 50px; 
 }
 
 /* Title */
-h1 {
+/* Title */
+.journal-title {
   font-size: 48px;
-  font-weight: 700;
-  color: black;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  padding-bottom: 120px; /* Use padding for a stronger 'push' effect */
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+  display: block;
+}
+
+.shift-up {
+  padding-top: 40px;
 }
 
 /* Subtitle */
 .subtitle {
-  margin-top: 10px;
+  margin: 0;
   font-size: 18px;
-  color: #555;
+  color: #444;
 }
 
 /* Heart */
@@ -75,9 +120,11 @@ h1 {
   position: absolute;
   bottom: 0px;
   right: 5px;
-  width: 200px; /* adjust size as needed */
+  width: 200px;
+  /* adjust size as needed */
   height: auto;
-  pointer-events: none; /* optional, so it doesn’t block clicks */
+  pointer-events: none;
+  /* optional, so it doesn’t block clicks */
 }
 
 /* Buttons */
@@ -95,7 +142,7 @@ h1 {
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  margin:5px;
+  margin: 5px;
 }
 
 /* Active */
@@ -118,22 +165,28 @@ h1 {
 
 .toggle-group {
   display: flex;
-  align-items: center; /* Vertically center the buttons */
-  gap: 12px; /* Space between buttons */
+  align-items: center;
+  /* Vertically center the buttons */
+  gap: 12px;
+  /* Space between buttons */
 }
 
 .toggle-group label {
   display: flex;
   align-items: center;
   gap: 6px;
-} 
+}
 
 .arrow-button {
-  height: 40px; /* Match the height of the radio buttons */
-  padding: 0 16px; /* Add some padding for width */
-  font-size: 24px; /* Make the arrow big enough to be visible */
+  height: 40px;
+  /* Match the height of the radio buttons */
+  padding: 0 16px;
+  /* Add some padding for width */
+  font-size: 24px;
+  /* Make the arrow big enough to be visible */
   cursor: pointer;
-  background-color: #050505; /* You can adjust color */
+  background-color: #050505;
+  /* You can adjust color */
   color: white;
   border: none;
   border-radius: 8px;
@@ -144,16 +197,10 @@ h1 {
   background-color: #303030;
 }
 
-.journal-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-  /* display: flex;
-  align-items: center; */
-  gap: 0.5rem;
-}
+/* Cleaned up duplicate journal-title */
 
-.text-input, .text-area {
+.text-input,
+.text-area {
   width: 100%;
   max-width: 600px;
   padding: 0.75rem 1rem;
@@ -162,7 +209,7 @@ h1 {
   outline: none;
   font-size: 1rem;
   opacity: 0.6;
-  margin: 5px;  
+  margin: 5px;
 }
 
 .text-area {
@@ -190,7 +237,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   opacity: 0.7;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 /* Placeholder text */

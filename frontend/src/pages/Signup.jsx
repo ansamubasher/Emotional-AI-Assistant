@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputField from "../components/InputField";
-import image from "../assets/Background.png";
 import "../styles/Signup.css";
+import Background from "../assets/Background.png";
+
+import LoginCard from "../components/LoginCard";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -11,10 +14,11 @@ function Signup() {
     email: "",
     password: "",
     age: "",
-    gender: "Male"
+    gender: ""
   });
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,15 +27,16 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
+    setError("");
 
     try {
+      console.log("Sending to server:", formData);
       const response = await axios.post("http://localhost:3000/auth/register", formData);
-
       if (response.data.success) {
-        console.log("Signup successful");
-        navigate("/login");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        navigate("/dashboard");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed. Please try again.");
@@ -41,98 +46,62 @@ function Signup() {
   };
 
   return (
-    <div className="SignupPage">
-      <div
-        className="bg"
-        style={{
-          backgroundImage: `url(${image})`,
-          height: "100vh",
-          width: "100%",
-          margin: 0,
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: -1
-        }}
-      ></div>
+    <div className="signupPage">
+      <img src={Background} className="signupBg" alt="" />
 
-      <div className="signupContainer">
+      <div className="loginCard">
+        <LoginCard />
+      </div>
 
-        <form onSubmit={handleSignup} className="signupForm">
-          <h2>Create your account!</h2>
+      <h2 className="signupTitle">Create your account!</h2>
 
-          <div className="formGroup">
+      <form onSubmit={handleSignup} className="signupFormAbsolute">
+        {error && <p className="errorMsgAbsolute">{error}</p>}
+        
+        <div className="signupFieldsContainer">
+          <div className="fieldItem">
             <label>Name</label>
-            <InputField
-              name="name"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={handleChange}
-            />
+            <InputField name="name" value={formData.name} onChange={handleChange} placeholder="Full Name" />
           </div>
 
-          <div className="formGroup">
+          <div className="fieldItem">
             <label>Email</label>
-            <InputField
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-            />
+            <InputField name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email" />
           </div>
 
-          <div className="formGroup">
+          <div className="fieldItem">
             <label>Password</label>
-            <InputField
-              name="password"
-              type="password"
-              placeholder="Create a password"
-              value={formData.password}
-              onChange={handleChange}
-            />
+            <InputField name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" />
           </div>
 
-          <div className="formRow">
-            <div className="formGroup half">
+          <div className="signupRow">
+            <div className="fieldItem half">
               <label>Age</label>
-              <InputField
-                name="age"
-                type="number"
-                placeholder="Age"
-                value={formData.age}
-                onChange={handleChange}
-              />
+              <InputField name="age" type="number" value={formData.age} onChange={handleChange} placeholder="Age" />
             </div>
-            <div className="formGroup half">
+            <div className="fieldItem half">
               <label>Gender</label>
-              <select
-                name="gender"
-                className="genderSelect"
-                value={formData.gender}
-                onChange={handleChange}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+              <select name="gender" value={formData.gender} onChange={handleChange} className="genderSelectSignup">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
               </select>
             </div>
           </div>
+        </div>
 
-          {error && <div className="errorMessage">{error}</div>}
+        <button className="confirm" type="submit" disabled={loading}>
+          {loading ? "..." : "Sign Up"}
+        </button>
 
-          <button
-            className="signupButton"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? "Creating Account..." : "Register"}
-          </button>
-
-          <p className="loginLink" onClick={() => navigate("/login")}>
-            Already have an account? Login
-          </p>
-        </form>
-      </div>
+        <p className="loginRedirectAbsolute">
+          Already have an account?{" "}
+          <Link to="/login" className="loginLink">
+            Login
+          </Link>
+        </p>
+      </form>
     </div>
   );
 }

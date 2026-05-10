@@ -1,158 +1,69 @@
 import React, { useState } from "react";
-import image from "../assets/Vector.svg"
-import "../styles/Lifestyle.css"
-
+import Layout from "../components/Layout";
+import { useNavigate } from "react-router-dom";
+import image from "../assets/Background.png";
+import heart from "../assets/heart.png";
+import "../styles/Lifestyle.css";
 
 function Lifestyle() {
-        const [sleepHours, setsleepHours] = useState("");
-        const [sleepTime, setsleepTime] = useState("");
+    const [rating, setRating] = useState(0);
+    const navigate = useNavigate();
 
-        const [rating, setRating] = useState(0);
+    return (
+        <Layout>
+            <div className="screen">
+                <img src={image} alt="background" className="background" />
+                
+                {/* Floating Heart */}
+                <img src={heart} alt="heart" className="floating-heart heart-1" />
 
-        function handleConfirm() {
-                console.log("Sleep number of hours saved")
-        }
-        function handleSleep() {
-                console.log("Sleep time saved")
+                <h1>LIFESTYLE</h1>
 
-        }
-        return (
-                <div className="screen">
-                        {/* // background image */}
-
-                        <img
-                                src={image}
-                                alt="background"
-                                className="background"
-                        />
-
-                        {/* // cards */}
-                        <div className="card1">
-
-
+                <div className="lifestyle-grid">
+                    {/* Card 1: Sleep Hours */}
+                    <div className="glass-card">
+                        <p className="card-title">How many hours did you sleep?</p>
+                        <div className="button-grid">
+                            <button className="btn-choice" onClick={() => console.log("More than 8")}>More than 8</button>
+                            <button className="btn-choice" onClick={() => console.log("8 hours")}>8 hours</button>
+                            <button className="btn-choice" onClick={() => console.log("4-7 hours")}>4-7 hours</button>
+                            <button className="btn-choice" onClick={() => console.log("Less than 4")}>Less than 4</button>
                         </div>
-                        <div className="card2">
+                    </div>
 
-
+                    {/* Card 2: Sleep Time */}
+                    <div className="glass-card">
+                        <p className="card-title">When did you sleep?</p>
+                        <div className="button-grid">
+                            <button className="btn-choice" onClick={() => console.log("Late")}>Late</button>
+                            <button className="btn-choice" onClick={() => console.log("Early")}>Early</button>
                         </div>
+                    </div>
 
-                        <div className="card3">
-
+                    {/* Card 3: Sleep Quality */}
+                    <div className="glass-card">
+                        <p className="card-title">How well did you sleep?</p>
+                        <div className="rating-stars">
+                            {[1, 2, 3, 4, 5].map((num) => (
+                                <span
+                                    key={num}
+                                    className="star"
+                                    onClick={() => setRating(num)}
+                                    style={{ color: num <= rating ? "gold" : "rgba(0,0,0,0.2)" }}
+                                >
+                                    ★
+                                </span>
+                            ))}
                         </div>
+                    </div>
 
-                        <p className="headingC1">
-                                Number of Hours of Sleep
-                        </p>
-                        <h1>
-                                LIFESTYLE
-                        </h1>
-                        {/* //buttons */}
-                        <button className="button1" onClick={handleConfirm}>
-                                More than 8
-                        </button>
-
-                        <button className="button2" onClick={handleConfirm}>
-                                8 hours
-                        </button>
-
-
-                        <button className="button3" onClick={handleConfirm}>
-                                4-7 hours
-                        </button>
-
-
-                        <button className="button4" onClick={handleConfirm}>
-                                Less than 4
-                        </button>
-
-                        <button className="button5" onClick={handleSleep}>
-                                Late
-                        </button>
-
-                        <button className="button6" onClick={handleSleep}>
-                                Early
-                        </button>
-
-
-
-                        <div className="micButton1">
-                                
-                                        <button >🎤 Start</button>
-                                
-                                        <button >⏹ Stop</button>
-                                
-
-
-                        </div>
-
-
-                         <div className="micButton2">
-                              
-                                        <button >🎤 Start</button>
-                              
-                                        <button >⏹ Stop</button>
-                               
-
-                        </div>
-
-
-                         <div className="micButton3">
-                              
-                                        <button >🎤 Start</button>
-                              
-                                        <button >⏹ Stop</button>
-                                
-
-                        </div>
-
-
-                       
-
-
-
-
-
-                                <p className="headingC2">
-                                        When did you sleep?
-                                </p>
-                                <div className="rating">
-                                        {[1, 2, 3, 4, 5].map((num) => (
-                                                <span
-                                                        key={num}
-                                                        onClick={() => setRating(num)}
-                                                        style={{
-                                                                fontSize: "30px",
-                                                                cursor: "pointer",
-                                                                color: num <= rating ? "gold" : "gray"
-                                                        }}
-                                                >
-                                                        ★
-                                                </span>
-                                        ))}
-                                </div>
-                                <p className="sleepQuality">
-                                        How well did you sleep?
-                                </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
-
-
-
-                        );
+                    <button className="btn-nav" onClick={() => navigate("/lifestyle2")}>
+                        Next →
+                    </button>
+                </div>
+            </div>
+        </Layout>
+    );
 }
 
-                        export default Lifestyle;
+export default Lifestyle;

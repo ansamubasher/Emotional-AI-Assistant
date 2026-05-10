@@ -1,104 +1,153 @@
-.SignupPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.signupContainer {
+.signupPage {
   position: relative;
-  width: 400px;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.signupBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* THE PURPLE CARD */
+.loginCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
-.signupCard {
-  display: none; /* Hide the old card if it's just decorative */
-}
-
-.signupForm h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-family: "Inter", sans-serif;
-  color: #333;
-}
-
-.formGroup {
-  margin-bottom: 20px;
-}
-
-.formGroup label {
-  display: block;
-  margin-bottom: 8px;
-  font-family: "Inter", sans-serif;
+/* THE TITLE */
+.signupTitle {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter";
   font-weight: bold;
-  color: #555;
+  font-size: 24px;
+  color: #333;
+  z-index: 2;
 }
 
-.formRow {
+/* THE FORM CONTAINER */
+.signupFormAbsolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px; /* Match the card height */
+  z-index: 2;
+}
+
+.signupFieldsContainer {
+  position: absolute;
+  top: 18%; /* Start after title */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.fieldItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fieldItem label {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.signupRow {
   display: flex;
   gap: 15px;
+  width: 100%;
 }
 
-.formGroup.half {
+.half {
   flex: 1;
 }
 
-.genderSelect {
+.genderSelectSignup {
   width: 100%;
-  height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 0 12px;
-  font-family: "Inter", sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: "Inter";
   background: white;
 }
 
-.signupButton {
-  width: 100%;
-  height: 45px;
+/* THE BUTTON - Fixed to match your original positioning */
+.confirm {
+  position: absolute;
   background-color: #ab90fc;
-  border: none;
   border-radius: 20px;
-  color: white;
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
+  height: 40px;
+  width: 140px;
+  top: 85%; /* Fixed position near bottom of card */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter";
   font-weight: bold;
+  color: white;
+  border: none;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 3;
 }
 
-.signupButton:hover {
-  background-color: #9270f9;
+.confirm:hover {
+  background-color: #8a6fe0;
+  transform: translateX(-50%) translateY(-2px);
 }
 
-.signupButton:disabled {
-  background-color: #ccc;
-}
-
-.errorMessage {
+.errorMsgAbsolute {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
   color: red;
-  margin-bottom: 15px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 100%;
   text-align: center;
+}
+
+.loginRedirectAbsolute {
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter";
+  font-size: 13px;
+  color: #444;
+  white-space: nowrap;
 }
 
 .loginLink {
-  text-align: center;
-  margin-top: 20px;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  color: #555;
-  cursor: pointer;
-}
-
-.loginLink:hover {
-  text-decoration: underline;
   color: #ab90fc;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
 }
