@@ -14,14 +14,14 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     const handleArrowClick = () => {
-        if (mode=="Text") {
-        navigate("/journal/text-entry");
+        if (mode === "Text") {
+            navigate("/journal/text");
         } 
-        else if (mode=="Audio") {
-        navigate("/journal/audio-entry");
+        else if (mode === "Audio") {
+            navigate("/journal/audio");
         }
         else {
-        alert("Please select an option first");
+            alert("Please select an option first");
         }
     };
     return (
@@ -32,7 +32,7 @@ const Dashboard = () => {
         <img src={heart} alt="heart" className="heart-icon" />
 
         {/* Title */}
-        <h1>Journal your day</h1>
+        <h1 className="journal-title">Journal your day</h1>
 
         <p className="subtitle">Choose your style</p>
 

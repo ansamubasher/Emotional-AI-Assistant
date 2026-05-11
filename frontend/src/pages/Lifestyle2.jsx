@@ -1,144 +1,89 @@
 import React, { useState } from "react";
-import image from "../assets/Vector.svg"
-import "../styles/Lifestyle2.css"
+import Layout from "../components/Layout";
+import { useNavigate } from "react-router-dom";
+import image from "../assets/Background.png";
+import heart from "../assets/heart.png";
+import "../styles/Lifestyle.css";
+
 function Lifestyle2() {
+  const navigate = useNavigate();
+  const [screenTime, setScreenTime] = useState("");
+  const [steps, setSteps] = useState("");
+  const [caffeinIntake, setCaffeinIntake] = useState("");
 
-        const [screenTime, setScreenTime]= useState(0);
-        const [workout, setWorkout]= useState("");
-        const [steps, setSteps]= useState("");
-        const [mealsSkipped, setMealsSkipped]= useState("");
-        const [caffeinIntake, setCaffeinIntake]= useState("");
-         function handleSave(){
-                console.log("All the data entered has been saved")
-         }
+  const handleSave = () => {
+    console.log("Saving data...");
+    navigate("/dashboard");
+  };
 
-        return ( 
-                <div className="screen">
-                   
-                        {/* // background image */}
-                        <img
-                                src={image}
-                                alt="background"
-                                className="background"
-                        />
-                        {/* // cards */}
-                        <div className="card1">
+  return (
+    <Layout>
+      <div className="screen">
+        <img src={image} alt="background" className="background" />
+        
+        {/* Floating Heart */}
+        <img src={heart} alt="heart" className="floating-heart heart-1" style={{ top: '15%', left: '10%' }} />
 
+        <h1>LIFESTYLE</h1>
 
-                        </div>
-                        <div className="card2">
+        <div className="lifestyle-grid">
+          {/* Card 1: Screen Time */}
+          <div className="glass-card">
+            <p className="card-title">SCREEN TIME</p>
+            <p className="card-subtitle">Please enter your total screen time</p>
+            <input 
+              className="modern-input" 
+              value={screenTime} 
+              onChange={(e) => setScreenTime(e.target.value)} 
+              placeholder="e.g. 4 hours"
+            />
+            <div className="button-grid">
+              <button className="btn-choice">Yes</button>
+              <button className="btn-choice">No</button>
+            </div>
+          </div>
 
+          {/* Card 2: Physical Activity */}
+          <div className="glass-card">
+            <p className="card-title">PHYSICAL ACTIVITY</p>
+            <p className="card-subtitle">Did you workout today? Enter steps below</p>
+            <input 
+              className="modern-input" 
+              value={steps} 
+              onChange={(e) => setSteps(e.target.value)} 
+              placeholder="Total Steps"
+            />
+            <div className="button-grid">
+              <button className="btn-choice">Yes</button>
+              <button className="btn-choice">No</button>
+            </div>
+          </div>
 
-                        </div>
+          {/* Card 3: Meals & Caffeine */}
+          <div className="glass-card">
+            <p className="card-title">MEALS & CAFFEINE</p>
+            <p className="card-subtitle">Any meal skipped?</p>
+            <div className="button-grid" style={{ marginBottom: '20px' }}>
+              <button className="btn-choice">YES</button>
+              <button className="btn-choice">NO</button>
+            </div>
+            
+            <p className="card-subtitle" style={{ marginBottom: '10px' }}>Caffeine Intake</p>
+            <input 
+              className="modern-input" 
+              value={caffeinIntake} 
+              onChange={(e) => setCaffeinIntake(e.target.value)} 
+              placeholder="e.g. 2 cups"
+            />
+          </div>
 
-                        <div className="card3">
-
-                        </div>
-
-
-                        
-                        <div className="micButton1">
-                                
-                                        <button >🎤 Start</button>
-                                
-                                        <button >⏹ Stop</button>
-                                
-
-
-                        </div>
-
-
-                         <div className="micButton2">
-                              
-                                        <button >🎤 Start</button>
-                              
-                                        <button >⏹ Stop</button>
-                               
-
-                        </div>
-
-
-                         <div className="micButton3">
-                              
-                                        <button >🎤 Start</button>
-                              
-                                        <button >⏹ Stop</button>
-                                
-
-                        </div>
-                        <p className="ScreenTime">
-                            SCREEN TIME
-                        </p>
-                        <p className="headingC1">
-                                Please enter your total screen time
-                        </p>
-<h1>
-                                LIFESTYLE
-                        </h1>
-                        <input
-                        className ="inputField"
-                        >
-                        </input>
-                        <button className="button5">
-                                Yes
-                        </button>
-
-                        <button className="button6">
-                                No
-                        </button>
-                        <p className ="physical">
-                            PHYSICAL ACTIVITY
-                        </p>
-                        <p className="headingC2">
-                                Did you workout today?
-                        </p>
-
-                        <p className="stepsHeading">
-                                Number of Steps
-                        </p>
-                        <input className= "stepsInput">
-                        </input>
-
-
-
-                        <p className="meal">
-                            MEAL
-                        </p>
-                       <p className="meal2">
-                            Any meal skipped?
-                        </p>
-                        <button className="mealButton">
-                            YES
-                        </button>
-
-                        <button className="mealButton2">
-                            NO
-                        </button>
-                        <p className= "caffeine">
-                            Caffeine Intake
-
-                        </p>
-                        <input className= "caffeineInput">
-                        </input>
-                        <button className= "confirmButton" onClick={handleSave}>
-                                Confirm
-                        </button>
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-
-
-
-        );
+          <button className="btn-nav" onClick={handleSave}>
+            Confirm & Finish
+          </button>
+        </div>
+      </div>
+    </Layout>
+  );
 }
 
 export default Lifestyle2;

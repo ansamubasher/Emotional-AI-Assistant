@@ -3,7 +3,7 @@ import "../styles/journal.css"; // for background
 
 const Layout = ({ children }) => {
   return (
-    <div className="journal-container dashboard-layout">
+    <div className="app-layout">
       <Sidebar />
       <div className="main-content">
         {children}

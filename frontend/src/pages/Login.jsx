@@ -10,14 +10,15 @@ import "../styles/Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
+    setError("");
 
     try {
       const response = await axios.post("http://localhost:3000/auth/login", {
@@ -26,15 +27,12 @@ function Login() {
       });
 
       if (response.data.success) {
-        // Store token and user data
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        
-        console.log("Login successful");
-        navigate("/"); // Redirect to dashboard
+        navigate("/dashboard");
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong. Please try again.");
+      setError(err.response?.data?.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -42,13 +40,18 @@ function Login() {
 
   return (
     <div className="LoginPage">
-      <div
-        className="bg"
+      <div className="bg"
         style={{
           backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          position: "absolute",
+          top: 0,
+          left: 0,
           height: "100vh",
-          width: "100%",
-          margin: 0,
+          width: "100vw",
+          margin: 0
         }}
       ></div>
 
@@ -72,7 +75,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        
         <h2>Welcome Back!</h2>
+        
         <div className="username">
           <h3>Email</h3>
         </div>
@@ -82,26 +87,47 @@ function Login() {
         </div>
 
         {error && (
-          <div style={{ 
-            position: "absolute", 
-            top: "68%", 
-            left: "50%", 
-            transform: "translateX(-50%)", 
-            color: "red", 
+          <div style={{
+            position: "absolute",
+            top: "68%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            color: "red",
             fontWeight: "bold",
-            zIndex: 1
+            zIndex: 10,
+            width: "80%",
+            textAlign: "center"
           }}>
             {error}
           </div>
         )}
 
-        <button 
-          className="confirm" 
-          type="submit" 
+        <button
+          className="loginConfirm"
+          type="submit"
           disabled={loading}
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "..." : "Login"}
         </button>
+
+        <p className="signupRedirect" style={{
+          position: "absolute",
+          top: "85%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontFamily: "Inter",
+          fontSize: "13px",
+          color: "#444",
+          whiteSpace: "nowrap"
+        }}>
+          Don't have an account?{" "}
+          <span 
+            onClick={() => navigate("/")} 
+            style={{ color: "#ab90fc", fontWeight: "bold", cursor: "pointer", textDecoration: "underline" }}
+          >
+            Sign up
+          </span>
+        </p>
       </form>
     </div>
   );

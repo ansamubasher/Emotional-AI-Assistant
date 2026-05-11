@@ -55,7 +55,7 @@ const JournalEntryText = () => {
 
   return (
     <Layout>
-      <div className="content">
+      <div className="content shift-up">
         <img src={heart} alt="heart" className="heart-icon-T" />
         <h1 className="journal-title">Journal your day</h1>
         <TextInput placeholder="Enter Title" value={title} onChange={e => setTitle(e.target.value)} />
