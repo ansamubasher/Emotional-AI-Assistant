@@ -1,0 +1,301 @@
+/* StressEvaluation Glassmorphism Design System */
+.stress-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  color: #1a1a1a;
+  background: #f8fafc;
+}
+
+.stress-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Page Title */
+.stress-title {
+  position: relative;
+  padding-top: 40px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 60px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #4a1d96;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.stress-subtitle {
+  position: relative;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6d28d9;
+  font-weight: 600;
+  margin-bottom: 30px;
+  z-index: 10;
+  opacity: 0.8;
+}
+
+/* Category Header */
+.category-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.category-icon {
+  font-size: 2rem;
+}
+
+.category-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #5b21b6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Card Grid Layout */
+.stress-grid {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  z-index: 5;
+}
+
+/* Modern Glass Card */
+.stress-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 32px;
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 340px;
+  min-height: 280px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.stress-card:nth-child(even) { animation-delay: 1.5s; }
+.stress-card:nth-child(3n) { animation-delay: 3s; }
+
+.stress-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.q-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4c1d95;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+/* Likert Scale Styling */
+.likert-scale {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+.likert-options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.likert-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  color: #5b21b6;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likert-btn:hover {
+  background: #ede9fe;
+  border-color: #8b5cf6;
+  transform: scale(1.1);
+}
+
+.likert-btn.active {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+}
+
+.likert-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 0 2px;
+}
+
+/* Navigation Controls */
+.nav-container {
+  position: relative;
+  margin: 20px 0 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  z-index: 100;
+}
+
+.btn-prev {
+  padding: 14px 35px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  color: #5b21b6;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-prev:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateX(-5px);
+}
+
+.btn-next, .btn-submit {
+  padding: 16px 50px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+  transition: all 0.3s;
+}
+
+.btn-next:hover, .btn-submit:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.6);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn-submit:hover {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.6);
+}
+
+/* Progress Bar */
+.progress-stepper {
+  position: fixed;
+  top: 150px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 20;
+}
+
+.step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.2);
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: #8b5cf6;
+  transform: scale(1.4);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.step-dot.completed {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+/* Floating Elements */
+.stress-heart {
+  position: absolute;
+  z-index: 2;
+  width: 60px;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: heartPulse 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-25px) scale(1.1) rotate(15deg); opacity: 0.9; }
+}
+
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stress-title { font-size: 2rem; }
+  .category-name { font-size: 1.4rem; }
+  .stress-grid { padding: 10px 20px 40px; }
+  .nav-container { flex-direction: column-reverse; gap: 15px; }
+  .progress-stepper { flex-direction: row; top: auto; bottom: 180px; right: 0; width: 100%; justify-content: center; }
+}

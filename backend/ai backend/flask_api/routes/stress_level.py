@@ -2,15 +2,14 @@ from flask import Blueprint, Flask, request, jsonify
 import os
 import joblib
 
-stress_bp = Blueprint("stress", __name__)
+stress_level_bp = Blueprint("stress_level", __name__)
 
 # ---- Load model once ----
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "stressDetectionModel.joblib")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "xgboost_model.joblib")
 
 if not os.path.exists(MODEL_PATH):
-    # Fallback to relative path if absolute fails (e.g. in some environments)
-    MODEL_PATH = os.path.join("models", "stressDetectionModel.joblib")
+    MODEL_PATH = os.path.join("models", "xgboost_model.joblib")
 
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
@@ -18,14 +17,14 @@ if not os.path.exists(MODEL_PATH):
 model = joblib.load(MODEL_PATH)
 
 
-# ---- Prediction functions (same as yours) ----
-def predict_stress(model, sample_input: list) -> str:
+# ---- Prediction functions ----
+def predict_stress_level(model, sample_input: list) -> str:
     prediction = model.predict([sample_input])[0]
     label_map = {0: "Low", 1: "Medium", 2: "High"}
     return label_map.get(int(prediction), "Unknown")
 
 
-def predict_stress_with_confidence(model, sample_input: list) -> dict:
+def predict_stress_level_with_confidence(model, sample_input: list) -> dict:
     prediction = model.predict([sample_input])[0]
     probabilities = model.predict_proba([sample_input])[0]
     label_map = {0: "Low", 1: "Medium", 2: "High"}
@@ -36,12 +35,12 @@ def predict_stress_with_confidence(model, sample_input: list) -> dict:
             "Low": round(float(probabilities[0]), 3),
             "Medium": round(float(probabilities[1]), 3),
             "High": round(float(probabilities[2]), 3),
-        }
+        },
     }
 
 
-# ---- Flask Route ---- 
-@stress_bp.route("/predict", methods=["POST"])
+# ---- Flask Route ----
+@stress_level_bp.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.get_json()
@@ -50,43 +49,88 @@ def predict():
 
         # Expecting JSON like:
         # {
-        #   "age": 22,
-        #   "gender": 1,
-        #   "sleep_hours": 5.5,
-        #   "screen_time_hours": 8.0,
-        #   "study_hours": 7.4,
-        #   "physical_activity": 0,
-        #   "caffeine_intake": 3,
-        #   "academic_pressure": 2
+        #   "anxiety_level": 3,
+        #   "self_esteem": 20,
+        #   "mental_health_history": 0,
+        #   "depression": 2,
+        #   "headache": 2,
+        #   "blood_pressure": 1,
+        #   "sleep_quality": 2,
+        #   "breathing_problem": 1,
+        #   "noise_level": 2,
+        #   "living_conditions": 3,
+        #   "safety": 3,
+        #   "basic_needs": 3,
+        #   "academic_performance": 2,
+        #   "study_load": 3,
+        #   "teacher_student_relationship": 3,
+        #   "future_career_concerns": 3,
+        #   "social_support": 2,
+        #   "peer_pressure": 3,
+        #   "extracurricular_activities": 2,
+        #   "bullying": 2
         # }
 
         required_fields = [
-            "age", "gender", "sleep_hours", "screen_time_hours",
-            "study_hours", "physical_activity", "caffeine_intake", "academic_pressure"
+            "anxiety_level",
+            "self_esteem",
+            "mental_health_history",
+            "depression",
+            "headache",
+            "blood_pressure",
+            "sleep_quality",
+            "breathing_problem",
+            "noise_level",
+            "living_conditions",
+            "safety",
+            "basic_needs",
+            "academic_performance",
+            "study_load",
+            "teacher_student_relationship",
+            "future_career_concerns",
+            "social_support",
+            "peer_pressure",
+            "extracurricular_activities",
+            "bullying",
         ]
 
-        # Validate input
+        # Validate all required fields are present
         for field in required_fields:
             if field not in data:
                 return jsonify({"error": f"Missing field: {field}"}), 400
 
+        # Build input vector in the same column order as training (X = df.drop('stress_level'))
         sample_input = [
-            data["age"],
-            data["gender"],
-            data["sleep_hours"],
-            data["screen_time_hours"],
-            data["study_hours"],
-            data["physical_activity"],
-            data["caffeine_intake"],
-            data["academic_pressure"]
+            data["anxiety_level"],
+            data["self_esteem"],
+            data["mental_health_history"],
+            data["depression"],
+            data["headache"],
+            data["blood_pressure"],
+            data["sleep_quality"],
+            data["breathing_problem"],
+            data["noise_level"],
+            data["living_conditions"],
+            data["safety"],
+            data["basic_needs"],
+            data["academic_performance"],
+            data["study_load"],
+            data["teacher_student_relationship"],
+            data["future_career_concerns"],
+            data["social_support"],
+            data["peer_pressure"],
+            data["extracurricular_activities"],
+            data["bullying"],
         ]
 
-        result = predict_stress_with_confidence(model, sample_input)
+        result = predict_stress_level_with_confidence(model, sample_input)
 
-        return jsonify({
-            "stress_level": result["predicted"],
-            "confidence": result["confidence"]
-        })
+        return jsonify(
+            {
+                "stress_level": result["predicted"],
+                "confidence": result["confidence"],
+            }
+        )
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
@@ -94,5 +138,5 @@ def predict():
 
 if __name__ == "__main__":
     app = Flask(__name__)
-    app.register_blueprint(stress_bp)
-    app.run(debug=True, port=5002)
+    app.register_blueprint(stress_level_bp)
+    app.run(debug=True, port=5003)

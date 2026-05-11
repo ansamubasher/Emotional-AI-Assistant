@@ -1,1 +1,2 @@
 backend/ai backend/inference/blenderbot_model/
+backend/ai backend/flask_api/models/xgboost_model.joblib

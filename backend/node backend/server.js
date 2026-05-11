@@ -30,5 +30,6 @@ app.use("/stress", stressRoutes);
 app.use("/empathy", empathyRoutes);
 app.use("/journals", journalRoutes);
 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

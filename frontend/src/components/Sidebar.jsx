@@ -28,24 +28,24 @@ const Sidebar = () => {
                 </div>
 
                 <div
-                    className={`menu-item ${isActive("/journal") || isActive("/journal/text") || isActive("/journal/audio") ? "active" : ""}`}
-                    onClick={() => navigate("/journal")}
+                    className={`menu-item ${isActive("/stress-evaluation") ? "active" : ""}`}
+                    onClick={() => navigate("/stress-evaluation")}
                 >
-                    Recommendations ▾
+                    Stress Eval
                 </div>
 
                 <div
-                    className={`submenu-item ${isActive("/journal/audio") ? "active" : ""}`}
-                    onClick={() => navigate("/journal/audio")}
+                    className={`menu-item ${isActive("/stress") ? "active" : ""}`}
+                    onClick={() => navigate("/stress")}
                 >
-                    Audio
+                    Stress Level
                 </div>
 
                 <div
-                    className={`submenu-item ${isActive("/journal/text") ? "active" : ""}`}
+                    className={`menu-item ${isActive("/journal/text") ? "active" : ""}`}
                     onClick={() => navigate("/journal/text")}
                 >
-                    Text
+                    Journal
                 </div>
 
                 <div

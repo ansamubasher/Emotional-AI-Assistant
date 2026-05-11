@@ -8,6 +8,8 @@ import EmpathyChat from "./pages/EmpathyChat";
 import Lifestyle from "./pages/Lifestyle";
 import Lifestyle2 from "./pages/Lifestyle2";
 import Signup from "./pages/Signup";
+import StressEvaluation from "./pages/StressEvaluation";
+import StressPage from "./pages/StressPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/empathy"        element={<EmpathyChat />} />
         <Route path="/lifestyle"      element={<Lifestyle />} />
         <Route path="/lifestyle2"     element={<Lifestyle2 />} />
+        <Route path="/stress-evaluation" element={<StressEvaluation />} />
+        <Route path="/stress"         element={<StressPage />} />
       </Routes>
     </Router>
   );
