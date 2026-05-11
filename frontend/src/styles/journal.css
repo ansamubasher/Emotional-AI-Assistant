@@ -198,6 +198,13 @@ body,
 }
 
 /* Cleaned up duplicate journal-title */
+.journal-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Reduced space between title input and body */
+  width: 100%;
+}
 
 .text-input,
 .text-area {

@@ -34,12 +34,6 @@ const Sidebar = () => {
                     Stress Eval
                 </div>
 
-                <div
-                    className={`menu-item ${isActive("/stress") ? "active" : ""}`}
-                    onClick={() => navigate("/stress")}
-                >
-                    Stress Level
-                </div>
 
                 <div
                     className={`menu-item ${isActive("/journal/text") ? "active" : ""}`}

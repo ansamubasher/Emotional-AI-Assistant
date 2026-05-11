@@ -58,8 +58,12 @@ const JournalEntryText = () => {
       <div className="content shift-up">
         <img src={heart} alt="heart" className="heart-icon-T" />
         <h1 className="journal-title">Journal your day</h1>
-        <TextInput placeholder="Enter Title" value={title} onChange={e => setTitle(e.target.value)} />
-        <TextArea placeholder="Begin Journaling..." value={entry} onChange={e => setEntry(e.target.value)} />
+        <div className="journal-input-section">
+          <br/>
+          <br/>
+          <TextInput placeholder="Enter Title" value={title} onChange={e => setTitle(e.target.value)} />
+          <TextArea placeholder="Begin Journaling..." value={entry} onChange={e => setEntry(e.target.value)} />
+        </div>
         
         {message && <p className={`status-message ${message.includes("Error") || message.includes("required") || message.includes("not logged") ? "error" : "success"}`} style={{ color: message.includes("successfully") ? "#4caf50" : "#f44336", marginBottom: "10px" }}>{message}</p>}
         
