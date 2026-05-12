@@ -31,7 +31,7 @@ const Sidebar = () => {
                     className={`menu-item ${isActive("/stress-evaluation") ? "active" : ""}`}
                     onClick={() => navigate("/stress-evaluation")}
                 >
-                    Stress Eval
+                    Stress Evaluation
                 </div>
 
 
