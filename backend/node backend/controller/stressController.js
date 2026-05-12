@@ -105,3 +105,22 @@ exports.getLatestStressLog = async (req, res) => {
         });
     }
 };
+
+exports.getStressHistory = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const history = await StressLog.find({ userId })
+            .sort({ createdAt: -1 })
+            .limit(5);
+
+        return res.status(200).json({
+            success: true,
+            data: history.reverse() // Chronological order
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};

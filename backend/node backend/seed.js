@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bcrypt = require("bcryptjs");
+
 const User = require("./models/Users");
 const Journal = require("./models/Journals");
 const LifestyleLog = require("./models/LifestyleLogs");
@@ -25,22 +27,24 @@ const seedDB = async () => {
     console.log("Cleared existing data.");
 
     // 1. Create Dummy Users
+    const hashedPassword = await bcrypt.hash("password123", 10);
     const users = await User.insertMany([
       {
         name: "Alice Johnson",
         email: "alice@example.com",
-        password: "password123",
+        password: hashedPassword,
         age: 25,
         gender: "Female"
       },
       {
         name: "Bob Smith",
         email: "bob@example.com",
-        password: "password123",
+        password: hashedPassword,
         age: 30,
         gender: "Male"
       }
     ]);
+
     console.log("Users seeded.");
 
     // 2. Create Dummy Journals
